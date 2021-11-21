@@ -7,13 +7,14 @@ volumes:
 services:  
   jellyfin:  
     image: jellyfin/jellyfin
+    container_name: jellyfin
     network_mode: "host"  
-#    user: 1000:1000
+    user: 114:119
+    restart: unless-stopped
     volumes:  
       - 'jellyfin-cache:/config'
       - 'jellyfin-cache:/cache'
-      - /nas/media:/media
-    ports:
-      - 8096:8096
+      - /srv/dev-disk-by-label-data1/media:/media
+#    ports:
+#      - 8096:8096
 #      - 1900:1900/udp
-
